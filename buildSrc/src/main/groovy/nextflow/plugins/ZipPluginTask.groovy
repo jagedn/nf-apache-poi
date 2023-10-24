@@ -37,7 +37,7 @@ class ZipPluginTask extends Jar{
 
         def directory = project.objects.fileProperty().convention(
                 project.layout.buildDirectory.file("plugin"))
-        setDestinationDir(directory.get().asFile)
+        getDestinationDirectory().set(directory.get().asFile)
     }
 
 }
