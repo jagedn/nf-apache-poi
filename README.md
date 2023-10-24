@@ -8,10 +8,17 @@ This is an example to build a Nextflow plugin from scratch
 
 It will compile and generate plugin artifacts at `build/plugin` directory
 
+## Release
+
+TODO: create a GitHub action to publish artifacts
+
+Manually: Create a release from GitHub project page. Add build/plugins artifacts to the release
+
 ## Example
 
 ```shell
 cd example
+
 export NXF_PLUGINS_TEST_REPOSITORY="https://github.com/jagedn/nf-apache-poi/releases/download/0.0.1/nf-apache-poi-0.0.1-meta.json"
 ./nextflow run main.nf
 ...
