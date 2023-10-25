@@ -1,6 +1,17 @@
 # Nextflow Apache POI plugin (example)
 
-This is an example to build a Nextflow plugin from scratch
+A Nextflow plugin to read/write in Excel files using Apache POI
+
+## Usage
+
+```
+include { fromExcel } from 'plugin/nf-apache-poi'
+
+workflow{
+    Channel.fromExcel("example.xlsx") 
+        | view
+} 
+```
 
 ## Build
 
@@ -8,13 +19,17 @@ This is an example to build a Nextflow plugin from scratch
 
 It will compile and generate plugin artifacts at `build/plugin` directory
 
-## Release
+## Release a new version
 
-TODO: create a GitHub action to publish artifacts
+- change `version` at `build.gradle`
+- commit changes
+- create a new tag `x.y.z` and push it
 
-Manually: Create a release from GitHub project page. Add build/plugins artifacts to the release
+A Github action will create the release `x.y.z` and upload artifacts (json and zip)
 
 ## Example
+
+Run a pipeline using a released version (0.0.1):
 
 ```shell
 cd example
