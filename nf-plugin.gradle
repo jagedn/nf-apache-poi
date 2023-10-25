@@ -1,0 +1,11 @@
+ext{
+    nextflowVersion = '23.04.0'
+    github_organization = 'jagedn'
+    pluginClassName = 'es.puravida.poi.ApachePOIPlugin'
+}
+
+dependencies {
+    // ADD HERE PLUGINS DEPENDENCIES
+    implementation 'org.apache.poi:poi:5.2.4'
+    implementation 'org.apache.poi:poi-ooxml:5.2.4'
+}

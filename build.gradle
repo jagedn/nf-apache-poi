@@ -16,6 +16,9 @@ configurations {
     runtimeClasspath.exclude group: 'org.slf4j', module: 'slf4j-api'
 }
 
+// ADD HERE PLUGINS DEPENDENCIES
+apply from:'nf-plugin.gradle'
+
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     compileOnly "io.nextflow:nextflow:$nextflowVersion"
@@ -29,10 +32,6 @@ dependencies {
 
     testImplementation(testFixtures("io.nextflow:nextflow:$nextflowVersion"))
     testImplementation(testFixtures("io.nextflow:nf-commons:$nextflowVersion"))
-
-    // ADD HERE PLUGINS DEPENDENCIES
-    implementation 'org.apache.poi:poi:5.2.4'
-    implementation 'org.apache.poi:poi-ooxml:5.2.4'
 }
 
 // use JUnit 5 platform
