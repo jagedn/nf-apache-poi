@@ -4,6 +4,8 @@ ext{
     pluginClassName = 'es.puravida.poi.ApachePOIPlugin'
 }
 
+version = '0.0.2'
+
 dependencies {
     // ADD HERE PLUGINS DEPENDENCIES
     implementation 'org.apache.poi:poi:5.2.4'

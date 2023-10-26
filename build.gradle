@@ -39,8 +39,6 @@ test {
     useJUnitPlatform()
 }
 
-version = '0.0.1'
-
 // package
 jar {
     manifest {
