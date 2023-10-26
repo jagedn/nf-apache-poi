@@ -1,0 +1,30 @@
+= nf-apache-poi: a Nextflow Plugin to read Excel files
+Jorge Aguilera <jagedn@gmail.com>
+v0.0.2
+:toc:
+
+nf-apache-poi is a Nextflow plugin able to read Excel files and emit their
+content via a `Channel`
+
+== Example
+
+[source]
+----
+include { fromExcel } from 'plugin/nf-apache-poi'
+
+workflow{
+    Channel.fromExcel("example.xlsx")
+            | view
+}
+----
+
+== Factory
+
+=== fromExcel
+
+Read first tab of the Excel file and emit a List<Object> per each row with the
+column values. If some cell is a formula, the evaluated value is returned
+
+
+
+
