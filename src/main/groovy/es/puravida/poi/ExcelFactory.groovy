@@ -15,6 +15,7 @@ import nextflow.plugin.extension.Function
 import nextflow.plugin.extension.Operator
 import nextflow.plugin.extension.PluginExtensionPoint
 import org.apache.poi.ss.usermodel.Cell
+import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.xssf.usermodel.XSSFWorkbookFactory
 
@@ -38,11 +39,26 @@ class ExcelFactory extends PluginExtensionPoint{
 
     private void emitExcel(DataflowWriteChannel channel, String file){
         def workbook = new XSSFWorkbookFactory().create(new File(file).newInputStream())
+        def evaluator = workbook.creationHelper.createFormulaEvaluator()
         def sheet = workbook.getSheetAt(0)
         for( Row row : sheet) {
             def values = []
             row.cellIterator().each {cell->
-                values << "$cell"
+                def cellValue = evaluator.evaluate(cell)
+                switch (cellValue.cellType){
+                    case CellType.NUMERIC:
+                        values << cellValue.numberValue
+                        break
+                    case CellType.STRING:
+                        values << cellValue.stringValue
+                        break
+                    case CellType.BOOLEAN:
+                        values << cellValue.booleanValue
+                        break
+                    case CellType.BLANK:
+                        values << ""
+                        break
+                }
             }
             channel.bind(values);
         }
