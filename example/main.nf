@@ -1,5 +1,7 @@
 include { fromExcel } from 'plugin/nf-apache-poi'
 
 workflow{
-    Channel.fromExcel("example.xlsx") | view
+    Channel.fromExcel("example.xlsx")
+            | map { row -> row.collect{ cell -> "$cell is $cell.class" } }
+            | view
 }
