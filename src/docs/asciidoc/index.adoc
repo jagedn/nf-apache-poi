@@ -13,7 +13,7 @@ content via a `Channel`
 include { fromExcel } from 'plugin/nf-apache-poi'
 
 workflow{
-    Channel.fromExcel("example.xlsx")
+    Channel.fromExcel("example.xlsx", [tab:'Sheet1'])
             | view
 }
 ----
@@ -22,9 +22,18 @@ workflow{
 
 === fromExcel
 
-Read first tab of the Excel file and emit a List<Object> per each row with the
+Read a tab of the Excel file and emits a List<Object> (or a Map) per each row with the
 column values. If some cell is a formula, the evaluated value is returned
 
+First argument is the path to the Excel file as a String
+
+Second, optional, argument is a map with diferent configurations:
+
+|===
+| tab | String/number | the name or the index of the tab. First tab if not provided
+| skip | number | skip first n rows. No skip by default
+| header | boolean | if true use first row as keys for a map. False by default
+|===
 
 
 
