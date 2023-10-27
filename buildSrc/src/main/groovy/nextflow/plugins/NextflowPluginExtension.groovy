@@ -36,7 +36,7 @@ class NextflowPluginExtension {
     }
 
     String getDownloadUrl() {
-        return downloadUrl.getOrElse("https://github.com/${githubOrganization}/${project.name}/releases/download")
+        return downloadUrl.getOrElse("https://github.com/${getGithubOrganization()}/${project.name}/releases/download")
     }
 
     String getGithubOrganization() {
