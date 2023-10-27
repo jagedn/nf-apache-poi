@@ -25,7 +25,7 @@ It will compile and generate plugin artifacts at `build/plugin` directory
 - commit changes
 - create a new tag `x.y.z` and push it
 
-A Github action will create the release `x.y.z` and upload artifacts (json and zip)
+A GitHub action will create the release `x.y.z` and upload artifacts (json and zip)
 
 ## Example
 

@@ -1,6 +1,5 @@
-ext{
-    nextflowVersion = '23.04.0'
-    github_organization = 'jagedn'
+nextflowPlugin{
+    githubOrganization = 'jagedn'
     pluginClassName = 'es.puravida.poi.ApachePOIPlugin'
 }
 
