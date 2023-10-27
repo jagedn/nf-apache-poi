@@ -18,8 +18,8 @@ import org.apache.commons.codec.digest.DigestUtils
 
 abstract class JsonPluginTask extends DefaultTask{
 
-    @Input
-    abstract Property<String> getDonwloadUrl()
+    @Internal
+    abstract Property<String> getDownloadUrl()
 
     @Internal
     final abstract RegularFileProperty zipFile =
@@ -39,7 +39,7 @@ abstract class JsonPluginTask extends DefaultTask{
 
 
     protected String resolveURL(){
-        "${donwloadUrl.get()}/${project.version}/${project.name}-${project.version}.zip"
+        "${downloadUrl.get()}/${project.version}/${project.name}-${project.version}.zip"
     }
 
     protected static String now() {
